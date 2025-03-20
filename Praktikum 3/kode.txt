@@ -1,0 +1,10 @@
+git remote set-url origin https://github.com/SamuelJHS/Praktikum-3.git
+git push -u origin main
+git clone https://github.com/SamuelJHS/Praktikum-3.git
+cd Praktikum-3
+code .
+git remote -v
+git remote remove origin
+git remote add origin https://github.com/SamuelJHS/Praktikum-3.git
+git remote -v
+git push -u origin main
