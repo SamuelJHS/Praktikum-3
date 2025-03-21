@@ -26,10 +26,8 @@ function showSelection() {
     let inputSection = document.getElementById("inputSection");
     let selectionSection = document.getElementById("selectionSection");
     let radioList = document.getElementById("radioList");
-    let dropdown = document.getElementById("dropdown");
     
     radioList.innerHTML = "";
-    dropdown.innerHTML = "";
     
     for (let i = 1; i <= jumlah; i++) {
         let inputField = document.getElementById(`pilihan${i}`);
@@ -43,11 +41,6 @@ function showSelection() {
         div.classList.add("radio-group");
         div.innerHTML = `<input type='radio' name='pilihan' value='${text}'> ${text}`;
         radioList.appendChild(div);
-        
-        let option = document.createElement("option");
-        option.value = text;
-        option.textContent = text;
-        dropdown.appendChild(option);
     }
     
     inputSection.classList.add("disabled");
@@ -58,7 +51,6 @@ function showResult() {
     let nama = document.getElementById("nama").value;
     let jumlah = parseInt(document.getElementById("jumlah").value);
     let selectedRadio = document.querySelector("input[name='pilihan']:checked");
-    let selectedDropdown = document.getElementById("dropdown").value;
     let resultSection = document.getElementById("resultSection");
     let resultText = document.getElementById("resultText");
     
@@ -67,12 +59,12 @@ function showResult() {
         pilihanList.push(document.getElementById(`pilihan${i}`).value);
     }
     
-    let selectedChoice = selectedRadio ? selectedRadio.value : selectedDropdown;
-    
-    if (!selectedChoice) {
+    if (!selectedRadio) {
         alert("Harap pilih salah satu pilihan.");
         return;
     }
+    
+    let selectedChoice = selectedRadio.value;
     
     resultText.innerHTML = `Hallo, nama saya ${nama}, saya mempunyai sejumlah ${jumlah} pilihan yaitu ${pilihanList.join(", ")}, dan saya memilih ${selectedChoice}.`;
     
